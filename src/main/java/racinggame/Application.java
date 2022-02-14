@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 import racinggame.domain.Car;
 import racinggame.domain.Racing;
+import racinggame.dto.CarDTO;
 import racinggame.dto.RacingDTO;
 import racinggame.view.InputView;
 import racinggame.view.ResultView;
@@ -15,23 +16,23 @@ public class Application {
         int tryNumber = InputView.getTryNumber();
 
         Racing game = Racing.fromCarNames(carNames);
-        List<List<RacingDTO>> results = new ArrayList<>();
+        List<RacingDTO> results = new ArrayList<>();
         race(tryNumber, game, results);
 
         ResultView.printResult(results, game.getWinnersName());
     }
 
-    private static void race(int tryNumber, Racing game, List<List<RacingDTO>> results) {
+    private static void race(int tryNumber, Racing game, List<RacingDTO> results) {
         while (tryNumber > 0) {
-            List<RacingDTO> result = convertCars(game.race());
+            RacingDTO result = new RacingDTO(convertCars(game.race()));
             results.add(result);
             tryNumber--;
         }
     }
 
-    private static List<RacingDTO> convertCars(List<Car> cars) {
+    private static List<CarDTO> convertCars(List<Car> cars) {
         return cars.stream()
-            .map(RacingDTO::from)
+            .map(CarDTO::from)
             .collect(Collectors.toList());
     }
 }

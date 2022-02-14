@@ -1,6 +1,7 @@
 package racinggame.view;
 
 import java.util.List;
+import racinggame.dto.CarDTO;
 import racinggame.dto.RacingDTO;
 
 public class ResultView {
@@ -8,20 +9,25 @@ public class ResultView {
     private static final String CAR_COLON = " : ";
     private static final String DELIMITER = ", ";
 
-    public static void printRace(List<List<RacingDTO>> race) {
-        for (List<RacingDTO> cars : race) {
-            printCars(cars);
+    public static void printResult(List<RacingDTO> race, List<String> winnerNames) {
+        printRace(race);
+        printWinners(winnerNames);
+    }
+
+    public static void printRace(List<RacingDTO> race) {
+        for (RacingDTO cars : race) {
+            printCars(cars.get());
         }
     }
 
-    public static void printCars(List<RacingDTO> cars) {
-        for (RacingDTO car : cars) {
+    public static void printCars(List<CarDTO> cars) {
+        for (CarDTO car : cars) {
             printCar(car);
         }
         System.out.println();
     }
 
-    private static void printCar(RacingDTO car) {
+    private static void printCar(CarDTO car) {
         String locationBar = getLocationBar(car.getLocation());
         String result = car.getName() + CAR_COLON + locationBar;
         System.out.println(result);
