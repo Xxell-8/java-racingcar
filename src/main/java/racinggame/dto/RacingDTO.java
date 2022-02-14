@@ -1,34 +1,15 @@
 package racinggame.dto;
 
-import racinggame.domain.Car;
+import java.util.List;
 
 public class RacingDTO {
+    private final List<CarDTO> cars;
 
-    private String name;
-    private int location;
-
-    public RacingDTO(String name, int location) {
-        this.name = name;
-        this.location = location;
+    public RacingDTO(List<CarDTO> cars) {
+        this.cars = cars;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public int getLocation() {
-        return location;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setLocation(int location) {
-        this.location = location;
-    }
-
-    public static RacingDTO from(Car car) {
-        return new RacingDTO(car.getName(), car.getLocation());
+    public List<CarDTO> get() {
+        return cars;
     }
 }
