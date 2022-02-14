@@ -9,7 +9,7 @@ public class Racing {
     private static final int FORWARD_NUMBER = 4;
     private static final Random random = new Random();
 
-    private List<Car> cars;
+    private final List<Car> cars;
 
     private Racing(List<Car> cars) {
         this.cars = cars;
