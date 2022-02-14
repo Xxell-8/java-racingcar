@@ -18,8 +18,7 @@ public class Application {
         List<List<RacingDTO>> results = new ArrayList<>();
         race(tryNumber, game, results);
 
-        ResultView.printRace(results);
-        ResultView.printWinners(game.getWinnersName());
+        ResultView.printResult(results, game.getWinnersName());
     }
 
     private static void race(int tryNumber, Racing game, List<List<RacingDTO>> results) {
